@@ -1,7 +1,816 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InfoPoint GroupAI – Intelligent Chat Agents for Your Website</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a12;
+    --bg: #f5f4f0;
+    --surface: #ffffff;
+    --accent: #5b4bff;
+    --accent2: #00d4a8;
+    --accent3: #ff5b8d;
+    --muted: #7a7a8c;
+    --border: rgba(0,0,0,0.08);
+    --radius: 20px;
+    --font-head: 'Syne', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    padding: 0 5vw;
+    background: rgba(245,244,240,0.85);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--border);
+    height: 68px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo { font-family: var(--font-head); font-weight: 800; font-size: 1.4rem; color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+  .nav-logo span { color: var(--accent); }
+  .nav-logo-dot { width: 10px; height: 10px; background: var(--accent); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.4);opacity:.6} }
+  .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--ink); text-decoration: none; font-size: .9rem; font-weight: 500; opacity: .75; transition: opacity .2s; }
+  .nav-links a:hover { opacity: 1; }
+  .nav-cta-group { display: flex; align-items: center; gap: .75rem; }
+  .btn { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-body); font-weight: 600; font-size: .88rem; border: none; cursor: pointer; transition: all .2s; text-decoration: none; border-radius: 100px; padding: .55rem 1.2rem; }
+  .btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--border); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: #4338e8; transform: translateY(-1px); box-shadow: 0 8px 20px rgba(91,75,255,.3); }
+  .btn-lg { padding: .85rem 2rem; font-size: 1rem; }
+  .btn-xl { padding: 1rem 2.4rem; font-size: 1.05rem; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--ink); border-radius: 2px; transition: all .3s; }
+  .mobile-menu { display: none; position: fixed; top: 68px; left: 0; right: 0; background: var(--surface); padding: 1.5rem 5vw 2rem; border-bottom: 1px solid var(--border); z-index: 999; flex-direction: column; gap: 1.25rem; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { color: var(--ink); text-decoration: none; font-size: 1.05rem; font-weight: 500; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh; padding: 120px 5vw 80px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background: radial-gradient(ellipse 70% 60% at 70% 50%, rgba(91,75,255,.08) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 50% at 20% 80%, rgba(0,212,168,.07) 0%, transparent 60%);
+  }
+  .hero-grid-lines {
+    position: absolute; inset: 0; z-index: 0;
+    background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
+  }
+  .hero-content { position: relative; z-index: 1; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(91,75,255,.1); color: var(--accent); border: 1px solid rgba(91,75,255,.25); border-radius: 100px; padding: .35rem .9rem; font-size: .8rem; font-weight: 600; margin-bottom: 1.5rem; }
+  .hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: pulse 2s infinite; }
+  h1 { font-family: var(--font-head); font-size: clamp(2.6rem, 5vw, 4rem); font-weight: 800; line-height: 1.08; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
+  h1 em { font-style: normal; color: var(--accent); }
+  .hero-sub { font-size: 1.15rem; color: var(--muted); max-width: 480px; margin-bottom: 2rem; font-weight: 300; }
+  .hero-actions { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .hero-meta { display: flex; align-items: center; gap: 1.5rem; margin-top: 2.5rem; }
+  .hero-stat { text-align: center; }
+  .hero-stat strong { display: block; font-family: var(--font-head); font-size: 1.6rem; font-weight: 800; color: var(--ink); }
+  .hero-stat span { font-size: .78rem; color: var(--muted); }
+  .hero-stat-divider { width: 1px; height: 32px; background: var(--border); }
+  .hero-visual { position: relative; z-index: 1; display: flex; justify-content: center; }
+  .chat-mockup {
+    width: 100%; max-width: 420px;
+    background: var(--surface);
+    border-radius: 24px;
+    box-shadow: 0 40px 80px rgba(0,0,0,.12), 0 0 0 1px var(--border);
+    overflow: hidden;
+    animation: float 4s ease-in-out infinite;
+  }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+  .chat-header { background: var(--accent); padding: 1rem 1.25rem; display: flex; align-items: center; gap: 10px; }
+  .chat-header-avatar { width: 36px; height: 36px; background: rgba(255,255,255,.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+  .chat-header-info h4 { color: #fff; font-family: var(--font-head); font-size: .9rem; font-weight: 700; }
+  .chat-header-info p { color: rgba(255,255,255,.75); font-size: .75rem; }
+  .chat-online { width: 8px; height: 8px; background: var(--accent2); border-radius: 50%; margin-left: auto; animation: pulse 2s infinite; }
+  .chat-body { padding: 1.25rem; display: flex; flex-direction: column; gap: .8rem; background: #f8f8fc; }
+  .chat-msg { max-width: 80%; padding: .65rem .9rem; border-radius: 16px; font-size: .85rem; line-height: 1.45; }
+  .chat-msg.bot { background: #fff; color: var(--ink); border-radius: 4px 16px 16px 16px; box-shadow: 0 2px 6px rgba(0,0,0,.06); animation: slidein .5s ease both; }
+  .chat-msg.user { background: var(--accent); color: #fff; align-self: flex-end; border-radius: 16px 16px 4px 16px; animation: slidein .5s ease .2s both; }
+  .chat-msg.bot.d2 { animation-delay: .4s; }
+  .chat-msg.user.d2 { animation-delay: .6s; }
+  .chat-msg.bot.d3 { animation-delay: .8s; }
+  @keyframes slidein { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+  .chat-typing { display: flex; gap: 5px; padding: .6rem .9rem; background: #fff; border-radius: 4px 16px 16px 16px; width: fit-content; box-shadow: 0 2px 6px rgba(0,0,0,.06); }
+  .chat-typing span { width: 7px; height: 7px; background: var(--muted); border-radius: 50%; animation: bounce .9s infinite; }
+  .chat-typing span:nth-child(2){animation-delay:.15s} .chat-typing span:nth-child(3){animation-delay:.3s}
+  @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+  .chat-input-bar { padding: .85rem 1.25rem; background: var(--surface); display: flex; align-items: center; gap: 8px; border-top: 1px solid var(--border); }
+  .chat-input-bar input { flex: 1; border: 1.5px solid var(--border); border-radius: 100px; padding: .5rem 1rem; font-family: var(--font-body); font-size: .82rem; outline: none; background: #f8f8fc; }
+  .chat-send { width: 34px; height: 34px; background: var(--accent); border: none; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1rem; }
+
+  /* ── SECTIONS SHARED ── */
+  section { padding: 100px 5vw; }
+  .section-label { font-size: .78rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); margin-bottom: .75rem; }
+  h2 { font-family: var(--font-head); font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; line-height: 1.1; letter-spacing: -.025em; margin-bottom: 1rem; }
+  h2 em { font-style: normal; color: var(--accent); }
+  .section-sub { font-size: 1.05rem; color: var(--muted); max-width: 560px; font-weight: 300; }
+  .centered { text-align: center; }
+  .centered .section-sub { margin-left: auto; margin-right: auto; }
+
+  /* ── LOGOS TICKER ── */
+  #logos { padding: 40px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); overflow: hidden; background: var(--surface); }
+  .logos-label { text-align: center; font-size: .8rem; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 1.5rem; }
+  .ticker-track { display: flex; gap: 4rem; animation: ticker 25s linear infinite; width: max-content; }
+  .ticker-track:hover { animation-play-state: paused; }
+  @keyframes ticker { to { transform: translateX(-50%); } }
+  .ticker-item { font-family: var(--font-head); font-weight: 800; font-size: 1.1rem; color: var(--muted); opacity: .45; white-space: nowrap; transition: opacity .2s; }
+  .ticker-item:hover { opacity: .9; }
+
+  /* ── HOW IT WORKS ── */
+  #how { background: var(--surface); }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 4rem; }
+  .step { position: relative; }
+  .step-num { width: 48px; height: 48px; border-radius: 14px; background: var(--accent); color: #fff; font-family: var(--font-head); font-weight: 800; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; }
+  .step:nth-child(2) .step-num { background: var(--accent2); }
+  .step:nth-child(3) .step-num { background: var(--accent3); }
+  .step h3 { font-family: var(--font-head); font-size: 1.2rem; font-weight: 700; margin-bottom: .5rem; }
+  .step p { color: var(--muted); font-size: .9rem; }
+  .step-connector { position: absolute; top: 24px; right: -1rem; width: 2rem; height: 2px; background: var(--border); display: flex; align-items: center; justify-content: center; }
+  .step-connector::after { content: '›'; color: var(--muted); position: absolute; right: -8px; font-size: 1.2rem; }
+  .step:last-child .step-connector { display: none; }
+
+  /* ── FEATURES ── */
+  #features { background: var(--bg); }
+  .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 4rem; }
+  .feat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+    transition: all .25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .feat-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .3s;
+  }
+  .feat-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,.08); }
+  .feat-card:hover::before { transform: scaleX(1); }
+  .feat-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .feat-card h3 { font-family: var(--font-head); font-size: 1.05rem; font-weight: 700; margin-bottom: .5rem; }
+  .feat-card p { color: var(--muted); font-size: .88rem; line-height: 1.55; }
+  .feat-card.featured { background: var(--accent); color: #fff; border-color: transparent; }
+  .feat-card.featured p { color: rgba(255,255,255,.8); }
+
+  /* ── USE CASES ── */
+  #usecases { background: var(--surface); }
+  .use-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 3.5rem; }
+  .use-card { background: var(--bg); border-radius: 14px; padding: 1.5rem 1.25rem; border: 1px solid var(--border); cursor: pointer; transition: all .2s; }
+  .use-card:hover { background: var(--accent); color: #fff; transform: scale(1.02); }
+  .use-card:hover p { color: rgba(255,255,255,.8); }
+  .use-card .use-icon { font-size: 1.6rem; margin-bottom: .75rem; }
+  .use-card h4 { font-family: var(--font-head); font-size: .95rem; font-weight: 700; margin-bottom: .4rem; }
+  .use-card p { font-size: .8rem; color: var(--muted); line-height: 1.45; }
+
+  /* ── DEMO ── */
+  #demo { background: var(--ink); color: #fff; position: relative; overflow: hidden; }
+  #demo::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 30% 50%, rgba(91,75,255,.25) 0%, transparent 60%); }
+  .demo-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; position: relative; z-index: 1; }
+  .demo-content .section-label { color: var(--accent2); }
+  .demo-content h2 { color: #fff; }
+  .demo-content .section-sub { color: rgba(255,255,255,.6); }
+  .demo-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+  .demo-item { display: flex; align-items: flex-start; gap: .85rem; }
+  .demo-check { width: 22px; height: 22px; background: rgba(0,212,168,.2); border: 1px solid var(--accent2); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: var(--accent2); font-size: .7rem; flex-shrink: 0; margin-top: 2px; }
+  .demo-item p { font-size: .92rem; color: rgba(255,255,255,.75); }
+  .demo-visual { position: relative; }
+  .demo-screen { background: #1a1a2e; border: 1px solid rgba(255,255,255,.1); border-radius: 20px; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,.4); }
+  .demo-screen-bar { height: 44px; background: rgba(255,255,255,.04); display: flex; align-items: center; padding: 0 1rem; gap: 6px; border-bottom: 1px solid rgba(255,255,255,.06); }
+  .demo-screen-bar span { width: 10px; height: 10px; border-radius: 50%; }
+  .s1{background:#ff5f57} .s2{background:#febc2e} .s3{background:#28c840}
+  .demo-screen-content { padding: 1.5rem; }
+  .demo-code-line { font-family: monospace; font-size: .8rem; padding: .35rem 0; border-bottom: 1px solid rgba(255,255,255,.04); color: rgba(255,255,255,.6); }
+  .demo-code-line .k { color: #bd93f9; }
+  .demo-code-line .s { color: #f1fa8c; }
+  .demo-code-line .v { color: var(--accent2); }
+  .demo-code-line .c { color: rgba(255,255,255,.3); font-style: italic; }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials { background: var(--bg); }
+  .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 4rem; }
+  .testi-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; }
+  .stars { color: #f59e0b; font-size: .85rem; margin-bottom: 1rem; }
+  .testi-card blockquote { font-size: .92rem; color: var(--ink); line-height: 1.65; margin-bottom: 1.5rem; font-style: italic; }
+  .testi-author { display: flex; align-items: center; gap: .75rem; }
+  .testi-avatar { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent2)); display: flex; align-items: center; justify-content: center; color: #fff; font-family: var(--font-head); font-weight: 700; font-size: .9rem; }
+  .testi-author-info strong { display: block; font-family: var(--font-head); font-size: .9rem; }
+  .testi-author-info span { font-size: .8rem; color: var(--muted); }
+
+  /* ── PRICING ── */
+  #pricing { background: var(--surface); }
+  .pricing-toggle { display: flex; align-items: center; gap: 1rem; margin: 2rem auto 0; width: fit-content; }
+  .pricing-toggle label { font-size: .9rem; cursor: pointer; color: var(--muted); }
+  .toggle-switch { width: 46px; height: 26px; background: var(--border); border-radius: 100px; position: relative; cursor: pointer; transition: background .3s; }
+  .toggle-switch.active { background: var(--accent); }
+  .toggle-switch::after { content: ''; position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; background: #fff; border-radius: 50%; transition: transform .3s; box-shadow: 0 2px 4px rgba(0,0,0,.2); }
+  .toggle-switch.active::after { transform: translateX(20px); }
+  .save-badge { background: rgba(0,212,168,.15); color: var(--accent2); font-size: .75rem; font-weight: 700; padding: .25rem .6rem; border-radius: 100px; }
+  .pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-top: 3rem; }
+  .plan-card { border: 1.5px solid var(--border); border-radius: 24px; padding: 2rem 1.75rem; position: relative; transition: all .25s; }
+  .plan-card:hover { box-shadow: 0 20px 50px rgba(0,0,0,.08); }
+  .plan-card.popular { border-color: var(--accent); background: linear-gradient(160deg, rgba(91,75,255,.05) 0%, transparent 60%); }
+  .popular-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #fff; font-size: .72rem; font-weight: 700; padding: .3rem .9rem; border-radius: 100px; white-space: nowrap; }
+  .plan-name { font-family: var(--font-head); font-size: 1rem; font-weight: 700; margin-bottom: .25rem; }
+  .plan-desc { font-size: .8rem; color: var(--muted); margin-bottom: 1.5rem; }
+  .plan-price { display: flex; align-items: flex-end; gap: .25rem; margin-bottom: 1.75rem; }
+  .plan-price .currency { font-size: 1.1rem; font-weight: 600; padding-bottom: 4px; }
+  .plan-price .amount { font-family: var(--font-head); font-size: 2.8rem; font-weight: 800; line-height: 1; }
+  .plan-price .period { font-size: .85rem; color: var(--muted); padding-bottom: 6px; }
+  .plan-features { list-style: none; display: flex; flex-direction: column; gap: .65rem; margin-bottom: 2rem; }
+  .plan-features li { display: flex; align-items: flex-start; gap: .6rem; font-size: .85rem; }
+  .plan-features li::before { content: '✓'; color: var(--accent2); font-weight: 700; flex-shrink: 0; }
+  .plan-features li.dim { color: var(--muted); }
+  .plan-features li.dim::before { content: '–'; color: var(--border); }
+  .plan-card .btn { width: 100%; justify-content: center; }
+  .plan-card.popular .btn-primary { box-shadow: 0 8px 20px rgba(91,75,255,.3); }
+
+  /* ── FAQ ── */
+  #faqs { background: var(--bg); }
+  .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 4rem; }
+  .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+  .faq-q { padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-family: var(--font-head); font-weight: 600; font-size: .95rem; gap: 1rem; }
+  .faq-arrow { width: 24px; height: 24px; background: var(--bg); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: transform .3s; font-size: .75rem; }
+  .faq-item.open .faq-arrow { transform: rotate(180deg); background: var(--accent); color: #fff; }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s; padding: 0 1.5rem; color: var(--muted); font-size: .9rem; line-height: 1.65; }
+  .faq-item.open .faq-a { max-height: 200px; padding: 0 1.5rem 1.25rem; }
+
+  /* ── CTA ── */
+  #cta {
+    background: var(--accent);
+    text-align: center;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  #cta::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+  #cta h2 { color: #fff; font-size: clamp(2rem, 4vw, 3.2rem); position: relative; z-index: 1; }
+  #cta p { color: rgba(255,255,255,.8); font-size: 1.1rem; max-width: 520px; margin: 1rem auto 2.5rem; position: relative; z-index: 1; font-weight: 300; }
+  #cta .btn-cta-white { background: #fff; color: var(--accent); border-radius: 100px; padding: .9rem 2.2rem; font-size: 1rem; font-weight: 700; border: none; cursor: pointer; text-decoration: none; display: inline-block; transition: all .2s; }
+  #cta .btn-cta-white:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(0,0,0,.15); }
+  #cta .btn-outline-white { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,.5); border-radius: 100px; padding: .9rem 2.2rem; font-size: 1rem; font-weight: 600; text-decoration: none; display: inline-block; transition: all .2s; }
+  #cta .btn-outline-white:hover { border-color: #fff; }
+  #cta .cta-btns { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; position: relative; z-index: 1; }
+
+  /* ── FOOTER ── */
+  footer { background: var(--ink); color: rgba(255,255,255,.6); padding: 60px 5vw 40px; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+  .footer-brand p { font-size: .88rem; line-height: 1.65; margin-top: .75rem; max-width: 260px; }
+  .footer-brand .nav-logo { color: #fff; margin-bottom: .5rem; }
+  .footer-col h5 { color: #fff; font-family: var(--font-head); font-weight: 700; font-size: .9rem; margin-bottom: 1rem; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .6rem; }
+  .footer-col a { color: rgba(255,255,255,.5); text-decoration: none; font-size: .88rem; transition: color .2s; }
+  .footer-col a:hover { color: #fff; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: gap; font-size: .82rem; }
+  .footer-socials { display: flex; gap: .75rem; }
+  .social-icon { width: 34px; height: 34px; background: rgba(255,255,255,.07); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.5); text-decoration: none; font-size: .9rem; transition: all .2s; }
+  .social-icon:hover { background: var(--accent); color: #fff; }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .fade-up { opacity: 0; transform: translateY(30px); transition: opacity .6s ease, transform .6s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .fade-up.d1 { transition-delay: .1s; }
+  .fade-up.d2 { transition-delay: .2s; }
+  .fade-up.d3 { transition-delay: .3s; }
+  .fade-up.d4 { transition-delay: .4s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1100px) {
+    .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+    .use-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 900px) {
+    #hero { grid-template-columns: 1fr; text-align: center; }
+    .hero-sub { margin-left: auto; margin-right: auto; }
+    .hero-actions { justify-content: center; }
+    .hero-meta { justify-content: center; }
+    .hero-visual { order: -1; }
+    .chat-mockup { max-width: 340px; }
+    .steps { grid-template-columns: 1fr; }
+    .step-connector { display: none; }
+    .features-grid { grid-template-columns: 1fr 1fr; }
+    .demo-inner { grid-template-columns: 1fr; }
+    .testi-grid { grid-template-columns: 1fr 1fr; }
+    .faq-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .use-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .nav-links, .nav-cta-group { display: none; }
+    .hamburger { display: flex; }
+    h1 { font-size: 2.2rem; }
+    .features-grid { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .testi-grid { grid-template-columns: 1fr; }
+    .use-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
 <body>
-  <h1>infopointgroup website</h1>
-  <p>Initial Commit</p>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-dot"></div>
+    InfoPoint Group<span>AI</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#demo">Demo</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#usecases">Use Cases</a></li>
+    <li><a href="#faqs">FAQs</a></li>
+    <li><a href="#cta">Resources</a></li>
+  </ul>
+  <div class="nav-cta-group">
+    <a href="#" class="btn btn-ghost">Log In</a>
+    <a href="#" class="btn btn-primary">Start Free Trial →</a>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#demo" onclick="closeMenu()">Demo</a>
+  <a href="#features" onclick="closeMenu()">Features</a>
+  <a href="#pricing" onclick="closeMenu()">Pricing</a>
+  <a href="#usecases" onclick="closeMenu()">Use Cases</a>
+  <a href="#faqs" onclick="closeMenu()">FAQs</a>
+  <a href="#" onclick="closeMenu()" style="margin-top:.5rem">Log In</a>
+  <a href="#" class="btn btn-primary" style="justify-content:center" onclick="closeMenu()">Start Free Trial →</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🚀 Now with GPT-4o & Claude integration</div>
+    <h1>Conversational AI <em>that converts</em> visitors 24/7</h1>
+    <p class="hero-sub">Deploy an intelligent AI chat agent on your website in minutes. Train it on your knowledge base and watch it answer 98% of questions instantly.</p>
+    <div class="hero-actions">
+      <a href="#" class="btn btn-primary btn-xl">Start Free Trial →</a>
+      <a href="#demo" class="btn btn-ghost btn-lg">▶ Watch Demo</a>
+    </div>
+    <div class="hero-meta">
+      <div class="hero-stat"><strong>98%</strong><span>Query accuracy</span></div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat"><strong>2 min</strong><span>Setup time</span></div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat"><strong>50+</strong><span>Languages</span></div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat"><strong>24/7</strong><span>Always on</span></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="chat-mockup">
+      <div class="chat-header">
+        <div class="chat-header-avatar">🤖</div>
+        <div class="chat-header-info"><h4>InfoPoint GroupAI Assistant</h4><p>Powered by your knowledge base</p></div>
+        <div class="chat-online"></div>
+      </div>
+      <div class="chat-body">
+        <div class="chat-msg bot">👋 Hi! I'm your AI assistant. How can I help you today?</div>
+        <div class="chat-msg user">What's included in the Pro plan?</div>
+        <div class="chat-msg bot d2">The Pro plan includes 3 AI agents, 5M character storage, lead capture, multilingual support, CRM integrations, and priority support. Want me to show you the pricing?</div>
+        <div class="chat-msg user d2">Yes please, and can I book a demo?</div>
+        <div class="chat-msg bot d3">Absolutely! You can <strong>book a demo here</strong> or start a free 14-day trial with no credit card. Shall I help you get started? ✨</div>
+        <div class="chat-typing"><span></span><span></span><span></span></div>
+      </div>
+      <div class="chat-input-bar">
+        <input type="text" placeholder="Ask anything…" readonly>
+        <button class="chat-send">➤</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGOS -->
+<div id="logos">
+  <p class="logos-label">Trusted by teams at</p>
+  <div style="overflow:hidden">
+    <div class="ticker-track">
+      <!-- TEST DATA -->
+      <span class="ticker-item">Shopify</span>
+      <span class="ticker-item">Stripe</span>
+      <span class="ticker-item">Notion</span>
+      <span class="ticker-item">Zendesk</span>
+      <span class="ticker-item">HubSpot</span>
+      <span class="ticker-item">Salesforce</span>
+      <span class="ticker-item">Intercom</span>
+      <span class="ticker-item">Twilio</span>
+      <span class="ticker-item">Vercel</span>
+      <span class="ticker-item">Linear</span>
+      <span class="ticker-item">Shopify</span>
+      <span class="ticker-item">Stripe</span>
+      <span class="ticker-item">Notion</span>
+      <span class="ticker-item">Zendesk</span>
+      <span class="ticker-item">HubSpot</span>
+      <span class="ticker-item">Salesforce</span>
+      <span class="ticker-item">Intercom</span>
+      <span class="ticker-item">Twilio</span>
+      <span class="ticker-item">Vercel</span>
+      <span class="ticker-item">Linear</span>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="centered fade-up">
+    <p class="section-label">How it works</p>
+    <h2>Up and running in <em>under 5 minutes</em></h2>
+    <p class="section-sub">No developers needed. Upload your content, customize your agent, and embed it on any website.</p>
+  </div>
+  <div class="steps">
+    <div class="step fade-up d1">
+      <div class="step-connector"></div>
+      <div class="step-num">1</div>
+      <h3>Train your agent</h3>
+      <p>Upload documents, paste your website URL, or connect your knowledge base. InfoPoint GroupAI ingests and understands your content in seconds.</p>
+    </div>
+    <div class="step fade-up d2">
+      <div class="step-connector"></div>
+      <div class="step-num">2</div>
+      <h3>Customize & brand</h3>
+      <p>Choose your colors, name, personality, and conversation flows. Set up lead capture forms and appointment booking in minutes.</p>
+    </div>
+    <div class="step fade-up d3">
+      <div class="step-num">3</div>
+      <h3>Embed & go live</h3>
+      <p>Copy a single line of code onto your website — or use our WordPress plugin. Your AI agent is live and converting visitors instantly.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="fade-up">
+    <p class="section-label">Features</p>
+    <h2>Everything you need to <em>delight</em> your visitors</h2>
+    <p class="section-sub">Powerful capabilities built for businesses of all sizes.</p>
+  </div>
+  <div class="features-grid" style="margin-top:3.5rem">
+    <div class="feat-card fade-up d1">
+      <div class="feat-icon">🧠</div>
+      <h3>GPT-4o Powered</h3>
+      <p>Backed by the latest OpenAI models (GPT-4o, GPT-4o-mini) for human-quality answers that stay on-brand and accurate.</p>
+    </div>
+    <div class="feat-card featured fade-up d2">
+      <div class="feat-icon">📥</div>
+      <h3>Lead Generation & Capture</h3>
+      <p>Designed chat-flow sequences that capture visitor data, qualify leads, and push them directly to your CRM — automatically.</p>
+    </div>
+    <div class="feat-card fade-up d3">
+      <div class="feat-icon">🌍</div>
+      <h3>50+ Languages</h3>
+      <p>Detect and respond in your visitor's language automatically. Serve global audiences without any extra configuration.</p>
+    </div>
+    <div class="feat-card fade-up d1">
+      <div class="feat-icon">📅</div>
+      <h3>Appointment Booking</h3>
+      <p>Integrate with Calendly, Google Calendar, and other scheduling tools so visitors can book meetings directly in the chat.</p>
+    </div>
+    <div class="feat-card fade-up d2">
+      <div class="feat-icon">🔌</div>
+      <h3>API & Webhooks</h3>
+      <p>Connect to any CRM, helpdesk, or business tool. Build custom workflows with our developer-friendly REST API and webhooks.</p>
+    </div>
+    <div class="feat-card fade-up d3">
+      <div class="feat-icon">📊</div>
+      <h3>Conversation Analytics</h3>
+      <p>Understand what your visitors are asking. Track resolution rates, popular topics, and optimize your knowledge base over time.</p>
+    </div>
+    <div class="feat-card fade-up d1">
+      <div class="feat-icon">🔒</div>
+      <h3>Privacy & Compliance</h3>
+      <p>GDPR-compliant data handling, encrypted storage, and full control over what your agent knows and shares with visitors.</p>
+    </div>
+    <div class="feat-card fade-up d2">
+      <div class="feat-icon">⚡</div>
+      <h3>Instant Responses</h3>
+      <p>Sub-second response times keep visitors engaged. No waiting, no timeouts — just fast, accurate conversational answers.</p>
+    </div>
+    <div class="feat-card fade-up d3">
+      <div class="feat-icon">🎨</div>
+      <h3>White-Label Ready</h3>
+      <p>Fully customize the look and feel. Remove InfoPoint GroupAI branding and present the chatbot as your own product to clients.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO -->
+<section id="demo">
+  <div class="demo-inner">
+    <div class="demo-content fade-up">
+      <p class="section-label">See it in action</p>
+      <h2>Embed in seconds, engage forever</h2>
+      <p class="section-sub" style="margin-top:.75rem">A single line of code is all it takes. InfoPoint GroupAI handles the rest — training, hosting, and scaling automatically.</p>
+      <div class="demo-list">
+        <div class="demo-item"><div class="demo-check">✓</div><p>No backend infrastructure to manage — fully hosted and auto-scaled</p></div>
+        <div class="demo-item"><div class="demo-check">✓</div><p>Works with WordPress, Shopify, Webflow, React, or any HTML site</p></div>
+        <div class="demo-item"><div class="demo-check">✓</div><p>Real-time knowledge base updates — no redeployment needed</p></div>
+        <div class="demo-item"><div class="demo-check">✓</div><p>Conversation history and analytics dashboard included</p></div>
+      </div>
+      <div style="margin-top:2rem; display:flex; gap:1rem; flex-wrap:wrap;">
+        <a href="#" class="btn btn-primary btn-lg" style="background:var(--accent2);color:var(--ink)">Book a Live Demo</a>
+        <a href="#pricing" class="btn btn-ghost btn-lg" style="border-color:rgba(255,255,255,.2);color:#fff">View Pricing</a>
+      </div>
+    </div>
+    <div class="demo-visual fade-up d2">
+      <div class="demo-screen">
+        <div class="demo-screen-bar">
+          <span class="s1"></span><span class="s2"></span><span class="s3"></span>
+          <span style="color:rgba(255,255,255,.3);font-size:.75rem;margin-left:.75rem">index.html</span>
+        </div>
+        <div class="demo-screen-content">
+          <div class="demo-code-line"><span class="c">&lt;!-- Paste before &lt;/body&gt; --&gt;</span></div>
+          <div class="demo-code-line"><span class="k">&lt;script</span> <span class="v">src</span>=<span class="s">"https://cdn.InfoPoint Groupai.app/widget.js"</span></div>
+          <div class="demo-code-line">  <span class="v">data-agent-id</span>=<span class="s">"your-agent-id"</span></div>
+          <div class="demo-code-line">  <span class="v">data-theme</span>=<span class="s">"light"</span></div>
+          <div class="demo-code-line">  <span class="v">data-position</span>=<span class="s">"bottom-right"</span></div>
+          <div class="demo-code-line">  <span class="v">data-lang</span>=<span class="s">"auto"</span></div>
+          <div class="demo-code-line"><span class="k">&gt;&lt;/script&gt;</span></div>
+          <div class="demo-code-line" style="margin-top:1rem;color:rgba(255,255,255,.25)">&nbsp;</div>
+          <div class="demo-code-line"><span class="c">// That's literally it. 🎉</span></div>
+          <div class="demo-code-line"><span class="c">// Your AI agent is now live.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- USE CASES -->
+<section id="usecases">
+  <div class="centered fade-up">
+    <p class="section-label">Use cases</p>
+    <h2>Built for every <em>industry</em></h2>
+    <p class="section-sub">Whether you're in e-commerce, healthcare, or finance — InfoPoint GroupAI adapts to your industry's language and workflows.</p>
+  </div>
+  <div class="use-grid">
+    <div class="use-card fade-up d1"><div class="use-icon">🛒</div><h4>Ecommerce</h4><p>Product recommendations & order tracking</p></div>
+    <div class="use-card fade-up d2"><div class="use-icon">🏥</div><h4>Healthcare</h4><p>Appointment booking & patient queries</p></div>
+    <div class="use-card fade-up d3"><div class="use-icon">🏠</div><h4>Real Estate</h4><p>Virtual tours & property enquiries</p></div>
+    <div class="use-card fade-up d4"><div class="use-icon">⚖️</div><h4>Legal Services</h4><p>Consultation scheduling & FAQs</p></div>
+    <div class="use-card fade-up d1"><div class="use-icon">🎓</div><h4>Education</h4><p>Admissions queries & course guidance</p></div>
+    <div class="use-card fade-up d2"><div class="use-icon">🍽️</div><h4>Restaurants</h4><p>Reservations & menu assistance</p></div>
+    <div class="use-card fade-up d3"><div class="use-icon">✈️</div><h4>Travel</h4><p>Booking confirmation & trip planning</p></div>
+    <div class="use-card fade-up d4"><div class="use-icon">🏦</div><h4>Banking</h4><p>Account queries & product info</p></div>
+    <div class="use-card fade-up d1"><div class="use-icon">📦</div><h4>Logistics</h4><p>Shipment tracking & status updates</p></div>
+    <div class="use-card fade-up d2"><div class="use-icon">🏭</div><h4>Manufacturing</h4><p>Parts availability & inventory checks</p></div>
+    <div class="use-card fade-up d3"><div class="use-icon">📣</div><h4>Marketing Agencies</h4><p>Client lead-gen & campaign support</p></div>
+    <div class="use-card fade-up d4"><div class="use-icon">🎰</div><h4>Entertainment</h4><p>Personalized recommendations</p></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" style="background:var(--surface)">
+  <div class="centered fade-up">
+    <p class="section-label">Testimonials</p>
+    <h2>Loved by <em>teams everywhere</em></h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card fade-up d1">
+      <div class="stars">★★★★★</div>
+      <blockquote>"This product has blown me away! The level of control when training the chatbot with my brand information is truly groundbreaking. Trust, reliability and consistency are key barriers in AI adoption — InfoPoint GroupAI solves all three."</blockquote>
+      <div class="testi-author">
+        <div class="testi-avatar">NG</div>
+        <div class="testi-author-info"><strong>Nadio Granata</strong><span>Co-Founder, Age of Human Think Tank</span></div>
+      </div>
+    </div>
+    <div class="testi-card fade-up d2">
+      <div class="stars">★★★★★</div>
+      <blockquote>"The back-office dashboard is so easy to use — I set up and trained a new chatbot for my client in under an hour. Uploading documents and scraping website data was a breeze. The lead capture and multilingual features are real game-changers."</blockquote>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background:linear-gradient(135deg,var(--accent3),var(--accent))">AM</div>
+        <div class="testi-author-info"><strong>Andrea Munt</strong><span>Freelance Marketing & Events Manager</span></div>
+      </div>
+    </div>
+    <div class="testi-card fade-up d3">
+      <div class="stars">★★★★★</div>
+      <blockquote>"The perfect addition for any business looking to embrace AI. The multilingual capabilities, lead generation tools, and seamless integrations make this an indispensable part of our client services stack."</blockquote>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background:linear-gradient(135deg,var(--accent2),#00a88a)">JA</div>
+        <div class="testi-author-info"><strong>Joe Armitage</strong><span>MD at KOMZZ, Multilingual Project Coordinator</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="centered fade-up">
+    <p class="section-label">Pricing</p>
+    <h2>Simple, transparent <em>pricing</em></h2>
+    <p class="section-sub">Start free. Scale as you grow. No hidden fees, no surprise bills.</p>
+    <div class="pricing-toggle">
+      <label onclick="setMonthly()">Monthly</label>
+      <div class="toggle-switch" id="billingToggle" onclick="toggleBilling()"></div>
+      <label onclick="setYearly()">Yearly</label>
+      <span class="save-badge">Save 20%</span>
+    </div>
+  </div>
+  <div class="pricing-grid fade-up" id="pricingGrid">
+    <!-- cards injected by JS -->
+  </div>
+  <p style="text-align:center;margin-top:2rem;color:var(--muted);font-size:.85rem">All plans include a <strong>14-day free trial</strong>. No credit card required.</p>
+</section>
+
+<!-- FAQ -->
+<section id="faqs">
+  <div class="centered fade-up">
+    <p class="section-label">FAQs</p>
+    <h2>Frequently asked <em>questions</em></h2>
+  </div>
+  <div class="faq-grid">
+    <div class="faq-item fade-up d1">
+      <div class="faq-q" onclick="toggleFaq(this)">How long does it take to set up? <span class="faq-arrow">▾</span></div>
+      <div class="faq-a">Most businesses are up and running in under 5 minutes. Upload your content, customize your agent's appearance, copy one line of code to your website, and you're live. Our onboarding wizard guides you through every step.</div>
+    </div>
+    <div class="faq-item fade-up d2">
+      <div class="faq-q" onclick="toggleFaq(this)">What data can I train my agent on? <span class="faq-arrow">▾</span></div>
+      <div class="faq-a">You can upload PDFs, Word documents, text files, and CSVs, or paste a website URL and we'll scrape the content automatically. Your agent can be trained on an entire knowledge base of millions of characters.</div>
+    </div>
+    <div class="faq-item fade-up d3">
+      <div class="faq-q" onclick="toggleFaq(this)">Which AI models do you use? <span class="faq-arrow">▾</span></div>
+      <div class="faq-a">InfoPoint GroupAI is powered by OpenAI's latest models including GPT-4o and GPT-4o-mini. We continuously update our integrations to offer access to the best-in-class language models available.</div>
+    </div>
+    <div class="faq-item fade-up d4">
+      <div class="faq-q" onclick="toggleFaq(this)">Can I use InfoPoint GroupAI on multiple websites? <span class="faq-arrow">▾</span></div>
+      <div class="faq-a">Yes! The Pro plan supports 3 AI agents (one per website or use-case), and the Enterprise plan supports 10. Each agent can have its own knowledge base, personality, and branding. Embedding on unlimited websites is included.</div>
+    </div>
+    <div class="faq-item fade-up d1">
+      <div class="faq-q" onclick="toggleFaq(this)">Does it work with my CRM? <span class="faq-arrow">▾</span></div>
+      <div class="faq-a">Yes, Pro and Enterprise plans include API and webhook access to connect with HubSpot, Salesforce, Zoho, Pipedrive, and virtually any other CRM or business tool. Lead data flows automatically into your system of record.</div>
+    </div>
+    <div class="faq-item fade-up d2">
+      <div class="faq-q" onclick="toggleFaq(this)">Is my data secure? <span class="faq-arrow">▾</span></div>
+      <div class="faq-a">Absolutely. All data is encrypted at rest and in transit. We are fully GDPR-compliant, and you retain full ownership of your data at all times. We never use your content to train shared models.</div>
+    </div>
+    <div class="faq-item fade-up d3">
+      <div class="faq-q" onclick="toggleFaq(this)">Can visitors switch languages mid-chat? <span class="faq-arrow">▾</span></div>
+      <div class="faq-a">Yes! InfoPoint GroupAI auto-detects the visitor's language and responds accordingly. Visitors can also switch languages at any time during the conversation. Available on Pro and Enterprise plans.</div>
+    </div>
+    <div class="faq-item fade-up d4">
+      <div class="faq-q" onclick="toggleFaq(this)">What kind of support do you offer? <span class="faq-arrow">▾</span></div>
+      <div class="faq-a">Standard plans include online support. Pro plans add a monthly drop-in call and done-with-you onboarding. Enterprise plans get a dedicated account manager, weekly calls, and done-for-you setup and prompt engineering support.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <h2>Ready to transform your<br>website conversations?</h2>
+  <p>Join thousands of businesses using InfoPoint GroupAI to turn website visitors into loyal customers — around the clock.</p>
+  <div class="cta-btns">
+    <a href="#" class="btn-cta-white">Start Free Trial — No card needed</a>
+    <a href="#demo" class="btn-outline-white">Book a Live Demo</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo" style="color:#fff"><div class="nav-logo-dot"></div>InfoPoint Group<span>AI</span></a>
+      <p>Conversational lead generation & information retrieval 24/7 via intelligent custom AI agents for any website.</p>
+      <div class="footer-socials" style="margin-top:1.25rem">
+        <a href="#" class="social-icon">in</a>
+        <a href="#" class="social-icon">▶</a>
+        <a href="#" class="social-icon">𝕏</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Product</h5>
+      <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#demo">Demo</a></li>
+        <li><a href="#usecases">Use Cases</a></li>
+        <li><a href="#">Integrations</a></li>
+        <li><a href="#">Changelog</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Resources</h5>
+      <ul>
+        <li><a href="#">Documentation</a></li>
+        <li><a href="#">API Reference</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Case Studies</a></li>
+        <li><a href="#">Affiliate Program</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms &amp; Conditions</a></li>
+        <li><a href="#">Status</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 InfoPoint GroupAI. All rights reserved.</span>
+    <span>Built for businesses that never sleep.</span>
+  </div>
+</footer>
+
+<script>
+// ── MOBILE MENU ──
+function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+// ── SCROLL ANIMATIONS ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ── FAQ ──
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// ── PRICING ──
+const monthly = [
+  { name:'Free Trial', desc:'No credit card required', price:'0', period:'/mo', popular:false, cta:'Start Free Trial', ctaClass:'btn-ghost',
+    features:['1 AI Agent','£5 Complimentary Credit','200k Characters Storage','GPT-4o-mini Default','Limited Dashboard Access','Custom Knowledge Base','File & Website Upload'] },
+  { name:'Standard', desc:'Perfect for small businesses', price:'95', period:'/mo', popular:false, cta:"Let's Get Started", ctaClass:'btn-primary',
+    features:['1 AI Agent','£10 Complimentary Credit','1M Characters Storage','GPT-4o & GPT-3.5 Access','Full Dashboard Access','Unlimited Website Embedding','Unlimited Staff Accounts','Automatic Updates','Standard Support'] },
+  { name:'Pro', desc:'For growing teams', price:'295', period:'/mo', popular:true, cta:"Let's Get Started", ctaClass:'btn-primary',
+    features:['Everything in Standard','3 AI Agents','£25 Complimentary Credit','5M Characters Storage','Lead Generation Capture','Appointment Scheduling','Multilingual Support','Done-With-You Onboarding','Conversation Analytics','API & Webhooks','Pro Support + Monthly Call'] },
+  { name:'Enterprise', desc:'Multi-purpose integrations', price:'995', period:'/mo', popular:false, cta:'Book Discovery Call', ctaClass:'btn-ghost',
+    features:['Everything in Pro','10 AI Agents','£100 Complimentary Credit','25M Characters Storage','Done-For-You Onboarding','Unlimited Team Members','Custom API & Webhooks','Custom Integrations','Dedicated Prompt Engineering','Enterprise Support','Weekly Drop-in Call'] }
+];
+const yearly = monthly.map((p,i) => ({...p, price: ['0','950','2,950','9,950'][i], period:'/yr'}));
+let isYearly = false;
+
+function renderPricing() {
+  const plans = isYearly ? yearly : monthly;
+  document.getElementById('pricingGrid').innerHTML = plans.map(p => `
+    <div class="plan-card ${p.popular?'popular':''}">
+      ${p.popular ? '<span class="popular-badge">⭐ Best Seller</span>' : ''}
+      <div class="plan-name">${p.name}</div>
+      <div class="plan-desc">${p.desc}</div>
+      <div class="plan-price">
+        <span class="currency">£</span>
+        <span class="amount">${p.price}</span>
+        <span class="period">${p.period}</span>
+      </div>
+      <ul class="plan-features">${p.features.map(f => `<li>${f}</li>`).join('')}</ul>
+      <a href="#" class="btn ${p.ctaClass}">${p.cta}</a>
+    </div>
+  `).join('');
+}
+
+function toggleBilling() {
+  isYearly = !isYearly;
+  document.getElementById('billingToggle').classList.toggle('active', isYearly);
+  renderPricing();
+}
+function setMonthly() { isYearly = false; document.getElementById('billingToggle').classList.remove('active'); renderPricing(); }
+function setYearly() { isYearly = true; document.getElementById('billingToggle').classList.add('active'); renderPricing(); }
+renderPricing();
+
+// ── NAV active links on scroll ──
+const sections = document.querySelectorAll('section[id], div[id]');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if(window.scrollY >= s.offsetTop - 100) current = s.getAttribute('id'); });
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.style.opacity = a.getAttribute('href') === '#' + current ? '1' : '.75';
+    a.style.color = a.getAttribute('href') === '#' + current ? 'var(--accent)' : '';
+  });
+});
+</script>
 </body>
 </html>
