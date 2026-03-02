@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us – InfoPoint Group Software LLP | IT Consulting & AI Solutions India</title>
+<meta name="description" content="InfoPoint Group Software LLP is India's passionate IT consulting and AI solutions company. We provide ERP, cloud, managed support, custom software, and our flagship AI chatbot product — built to help every business grow.">
+<meta name="keywords" content="InfoPoint Group about us, IT consulting company India, AI chatbot company India, digital transformation India, ERP consulting India, cloud solutions India">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.infopointgroup.com/about">
+<meta property="og:title" content="About InfoPoint Group Software LLP">
+<meta property="og:description" content="Passionate IT consultants and AI innovators. Registered in India, serving clients globally.">
+<meta property="og:url" content="https://www.infopointgroup.com/about">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About InfoPoint Group Software LLP",
+  "description": "IT consulting, AI chatbots, ERP, cloud, and managed support company registered in India.",
+  "url": "https://www.infopointgroup.com/about",
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "InfoPoint Group Software LLP",
+    "foundingDate": "2015",
+    "foundingLocation": "India",
+    "legalName": "InfoPoint Group Software LLP"
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a12; --bg: #f5f4f0; --surface: #ffffff;
+    --accent: #5b4bff; --accent2: #00d4a8; --accent3: #ff5b8d;
+    --muted: #7a7a8c; --border: rgba(0,0,0,0.08);
+    --radius: 20px; --font-head: 'Syne', sans-serif; --font-body: 'DM Sans', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 0 5vw; background: rgba(245,244,240,0.88); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border); height: 68px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { font-family: var(--font-head); font-weight: 800; font-size: 1.25rem; color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 8px; line-height: 1.1; }
+  .nav-logo-sub { font-size: .68rem; font-weight: 500; color: var(--muted); display: block; letter-spacing: .04em; font-family: var(--font-body); }
+  .nav-logo-dot { width: 10px; height: 10px; background: var(--accent); border-radius: 50%; animation: pulse 2s infinite; flex-shrink: 0; }
+  @keyframes pulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.4);opacity:.6} }
+  .nav-links { display: flex; align-items: center; gap: 1.6rem; list-style: none; }
+  .nav-links a { color: var(--ink); text-decoration: none; font-size: .87rem; font-weight: 500; opacity: .75; transition: opacity .2s; }
+  .nav-links a:hover, .nav-links a.active { opacity: 1; color: var(--accent); }
+  .nav-cta-group { display: flex; align-items: center; gap: .75rem; }
+  .btn { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-body); font-weight: 600; font-size: .88rem; border: none; cursor: pointer; transition: all .2s; text-decoration: none; border-radius: 100px; padding: .55rem 1.2rem; }
+  .btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--border); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: #4338e8; transform: translateY(-1px); box-shadow: 0 8px 20px rgba(91,75,255,.3); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--ink); border-radius: 2px; }
+  .mobile-menu { display: none; position: fixed; top: 68px; left: 0; right: 0; background: var(--surface); padding: 1.5rem 5vw 2rem; border-bottom: 1px solid var(--border); z-index: 999; flex-direction: column; gap: 1.25rem; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { color: var(--ink); text-decoration: none; font-size: 1.05rem; font-weight: 500; }
+
+  /* HERO */
+  .about-hero { padding: 140px 5vw 100px; position: relative; overflow: hidden; background: var(--ink); }
+  .about-hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 50% 80% at 0% 50%, rgba(91,75,255,.3) 0%, transparent 55%), radial-gradient(ellipse 40% 60% at 100% 20%, rgba(0,212,168,.15) 0%, transparent 55%), radial-gradient(ellipse 30% 40% at 80% 90%, rgba(255,91,141,.1) 0%, transparent 50%); }
+  .about-hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size: 70px 70px; }
+  .about-hero-inner { position: relative; z-index: 1; max-width: 860px; }
+  .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(91,75,255,.2); color: #a89eff; border: 1px solid rgba(91,75,255,.35); border-radius: 100px; padding: .35rem .9rem; font-size: .78rem; font-weight: 600; margin-bottom: 2rem; letter-spacing: .08em; text-transform: uppercase; }
+  .about-hero h1 { font-family: var(--font-head); font-size: clamp(3rem, 6vw, 5.2rem); font-weight: 800; line-height: 1.0; letter-spacing: -.035em; color: #fff; margin-bottom: 2rem; }
+  .about-hero h1 .line { display: block; }
+  .about-hero h1 em { font-style: normal; background: linear-gradient(90deg, var(--accent2), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-intro { font-size: clamp(1.05rem, 2vw, 1.25rem); color: rgba(255,255,255,.65); max-width: 640px; font-weight: 300; line-height: 1.75; margin-bottom: 3rem; }
+  .hero-intro strong { color: #fff; font-weight: 500; }
+
+  /* MANIFESTO STRIP */
+  .manifesto-strip { background: var(--accent); overflow: hidden; }
+  .manifesto-ticker { display: flex; gap: 3rem; padding: 1.1rem 0; animation: ticker 22s linear infinite; width: max-content; }
+  .manifesto-item { font-family: var(--font-head); font-size: .82rem; font-weight: 700; color: rgba(255,255,255,.65); white-space: nowrap; text-transform: uppercase; letter-spacing: .1em; display: flex; align-items: center; gap: 1.5rem; }
+  .manifesto-item::after { content: '✦'; opacity: .5; }
+  @keyframes ticker { to { transform: translateX(-50%); } }
+
+  /* SECTIONS */
+  section { padding: 100px 5vw; }
+  .section-label { font-size: .78rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); margin-bottom: .75rem; }
+  h2 { font-family: var(--font-head); font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; line-height: 1.1; letter-spacing: -.025em; margin-bottom: 1rem; }
+  h2 em { font-style: normal; color: var(--accent); }
+
+  /* ORIGIN */
+  #origin { background: var(--surface); }
+  .origin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; margin-top: 4rem; }
+  .origin-text p { font-size: 1.02rem; color: var(--muted); line-height: 1.8; margin-bottom: 1.25rem; font-weight: 300; }
+  .origin-text p strong { color: var(--ink); font-weight: 500; }
+  .origin-text p em { font-style: italic; color: var(--accent); }
+  .origin-card { background: var(--bg); border: 1px solid var(--border); border-radius: 24px; padding: 2.5rem; position: relative; }
+  .origin-card-accent { position: absolute; top: -12px; left: 2rem; background: var(--accent); color: #fff; font-size: .72rem; font-weight: 700; padding: .3rem .85rem; border-radius: 100px; font-family: var(--font-head); }
+  .origin-quote { font-family: var(--font-head); font-size: 1.3rem; font-weight: 700; line-height: 1.45; color: var(--ink); margin-bottom: 1.5rem; }
+  .origin-quote em { color: var(--accent); font-style: normal; }
+  .origin-signature { display: flex; align-items: center; gap: 1rem; }
+  .sig-avatar { width: 48px; height: 48px; background: linear-gradient(135deg, var(--accent), var(--accent2)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-family: var(--font-head); font-weight: 800; font-size: 1rem; }
+  .sig-info strong { display: block; font-family: var(--font-head); font-size: .9rem; }
+  .sig-info span { font-size: .8rem; color: var(--muted); }
+  .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2.5rem; }
+  .stat-box { background: var(--bg); border-radius: 14px; padding: 1.5rem; text-align: center; border: 1px solid var(--border); }
+  .stat-box strong { display: block; font-family: var(--font-head); font-size: 2rem; font-weight: 800; color: var(--accent); }
+  .stat-box span { font-size: .8rem; color: var(--muted); }
+
+  /* WHAT WE DO */
+  #whatwedo { background: var(--bg); }
+  .whatwedo-intro { max-width: 620px; }
+  .whatwedo-intro p { color: var(--muted); font-size: 1.05rem; font-weight: 300; line-height: 1.75; margin-top: .75rem; }
+  .services-list { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 3.5rem; }
+  .svc-item { background: var(--surface); border-radius: 16px; padding: 1.75rem; border: 1.5px solid var(--border); display: flex; gap: 1.25rem; transition: all .25s; align-items: flex-start; }
+  .svc-item:hover { border-color: var(--accent); box-shadow: 0 10px 28px rgba(91,75,255,.08); }
+  .svc-item-icon { font-size: 1.75rem; flex-shrink: 0; width: 52px; height: 52px; background: rgba(91,75,255,.07); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+  .svc-item h4 { font-family: var(--font-head); font-size: .98rem; font-weight: 700; margin-bottom: .4rem; }
+  .svc-item p { color: var(--muted); font-size: .85rem; line-height: 1.55; }
+  .svc-item.ai-svc { border-color: rgba(91,75,255,.3); background: linear-gradient(135deg, rgba(91,75,255,.04) 0%, var(--surface) 60%); }
+  .svc-item.ai-svc .svc-item-icon { background: rgba(91,75,255,.15); }
+
+  /* MISSION + VISION */
+  #mission { background: var(--surface); }
+  .mv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3.5rem; }
+  .mv-card { padding: 3rem; border-radius: 28px; position: relative; overflow: hidden; }
+  .mv-card.mission { background: var(--accent); color: #fff; }
+  .mv-card.vision { background: var(--ink); color: #fff; }
+  .mv-card-icon { font-size: 2.5rem; margin-bottom: 1.5rem; }
+  .mv-card h3 { font-family: var(--font-head); font-size: 1.4rem; font-weight: 800; margin-bottom: 1rem; }
+  .mv-card p { font-size: 1rem; line-height: 1.75; opacity: .85; font-weight: 300; }
+  .mv-card::after { content: ''; position: absolute; bottom: -40px; right: -40px; width: 180px; height: 180px; border-radius: 50%; background: rgba(255,255,255,.06); }
+
+  /* VALUES */
+  #values { background: var(--bg); }
+  .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 4rem; }
+  .value-card { padding: 2.5rem 2rem; border-radius: 20px; border: 1.5px solid var(--border); transition: all .25s; position: relative; overflow: hidden; background: var(--surface); }
+  .value-card:hover { transform: translateY(-5px); border-color: var(--accent); box-shadow: 0 20px 50px rgba(91,75,255,.1); }
+  .value-number { position: absolute; top: 1.5rem; right: 1.5rem; font-family: var(--font-head); font-size: 3.5rem; font-weight: 800; color: var(--border); line-height: 1; }
+  .value-icon { font-size: 2rem; margin-bottom: 1.25rem; }
+  .value-card h3 { font-family: var(--font-head); font-size: 1.1rem; font-weight: 700; margin-bottom: .6rem; }
+  .value-card p { color: var(--muted); font-size: .88rem; line-height: 1.65; }
+
+  /* PROMISE */
+  #promise { background: var(--ink); color: #fff; position: relative; overflow: hidden; }
+  #promise::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(0,212,168,.12) 0%, transparent 60%), radial-gradient(ellipse 50% 60% at 10% 20%, rgba(91,75,255,.2) 0%, transparent 50%); }
+  .promise-inner { position: relative; z-index: 1; }
+  .promise-inner > .section-label { color: var(--accent2); }
+  .promise-lead { font-size: clamp(1rem, 2.5vw, 1.4rem); color: rgba(255,255,255,.7); max-width: 680px; font-weight: 300; line-height: 1.7; margin: 1rem 0 4rem; }
+  .promise-pillars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .pillar { padding: 2rem 1.5rem; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 18px; transition: all .25s; }
+  .pillar:hover { background: rgba(255,255,255,.08); transform: translateY(-3px); }
+  .pillar-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+  .pillar h4 { font-family: var(--font-head); font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: .5rem; }
+  .pillar p { font-size: .83rem; color: rgba(255,255,255,.5); line-height: 1.6; }
+
+  /* TEAM */
+  #team { background: var(--bg); }
+  .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 4rem; }
+  .team-card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; transition: all .3s; }
+  .team-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,.1); }
+  .team-avatar-wrap { height: 170px; display: flex; align-items: center; justify-content: center; }
+  .team-card:nth-child(1) .team-avatar-wrap { background: linear-gradient(135deg, #5b4bff22, #5b4bff44); }
+  .team-card:nth-child(2) .team-avatar-wrap { background: linear-gradient(135deg, #00d4a822, #00d4a844); }
+  .team-card:nth-child(3) .team-avatar-wrap { background: linear-gradient(135deg, #ff5b8d22, #ff5b8d44); }
+  .team-card:nth-child(4) .team-avatar-wrap { background: linear-gradient(135deg, #f59e0b22, #f59e0b44); }
+  .team-avatar-ring { width: 80px; height: 80px; border-radius: 50%; background: rgba(255,255,255,.5); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; font-size: 2.2rem; }
+  .team-info { padding: 1.5rem; }
+  .team-info h4 { font-family: var(--font-head); font-size: 1rem; font-weight: 700; }
+  .team-info .role { font-size: .8rem; color: var(--accent); font-weight: 600; margin: .2rem 0 .6rem; }
+  .team-info p { font-size: .82rem; color: var(--muted); line-height: 1.55; }
+
+  /* PASSION */
+  #passion { background: var(--surface); }
+  .passion-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+  .passion-statement { font-family: var(--font-head); font-size: clamp(1.6rem, 3.5vw, 2.5rem); font-weight: 800; line-height: 1.2; letter-spacing: -.02em; margin: 1rem 0 2.5rem; }
+  .passion-statement em { font-style: normal; color: var(--accent); }
+  .passion-body { font-size: 1.05rem; color: var(--muted); line-height: 1.85; font-weight: 300; max-width: 720px; margin: 0 auto; }
+  .passion-body strong { color: var(--ink); font-weight: 500; }
+  .passion-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 4rem; text-align: left; }
+  .passion-card { background: var(--bg); border-radius: 18px; padding: 2rem; border: 1px solid var(--border); }
+  .passion-card-num { font-family: var(--font-head); font-size: 2.5rem; font-weight: 800; line-height: 1; margin-bottom: .75rem; }
+  .passion-card:nth-child(1) .passion-card-num { color: var(--accent); }
+  .passion-card:nth-child(2) .passion-card-num { color: var(--accent2); }
+  .passion-card:nth-child(3) .passion-card-num { color: var(--accent3); }
+  .passion-card h4 { font-family: var(--font-head); font-size: 1rem; font-weight: 700; margin-bottom: .5rem; }
+  .passion-card p { font-size: .85rem; color: var(--muted); line-height: 1.6; }
+
+  /* CTA */
+  #about-cta { background: var(--accent); text-align: center; color: #fff; position: relative; overflow: hidden; }
+  #about-cta::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23fff' fill-opacity='.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+  #about-cta h2 { color: #fff; font-size: clamp(2rem, 4vw, 3rem); position: relative; z-index: 1; }
+  #about-cta p { color: rgba(255,255,255,.8); font-size: 1.05rem; max-width: 500px; margin: 1rem auto 2.5rem; position: relative; z-index: 1; font-weight: 300; }
+  .cta-btns { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; position: relative; z-index: 1; }
+  .btn-cta-white { background: #fff; color: var(--accent); border-radius: 100px; padding: .9rem 2.2rem; font-size: 1rem; font-weight: 700; border: none; cursor: pointer; text-decoration: none; display: inline-block; transition: all .2s; font-family: var(--font-body); }
+  .btn-cta-white:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(0,0,0,.15); }
+  .btn-outline-white { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,.5); border-radius: 100px; padding: .9rem 2.2rem; font-size: 1rem; font-weight: 600; text-decoration: none; display: inline-block; transition: all .2s; font-family: var(--font-body); }
+  .btn-outline-white:hover { border-color: #fff; }
+
+  /* FOOTER */
+  footer { background: var(--ink); color: rgba(255,255,255,.6); padding: 60px 5vw 40px; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+  .footer-col h5 { color: #fff; font-family: var(--font-head); font-weight: 700; font-size: .9rem; margin-bottom: 1rem; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .6rem; }
+  .footer-col a { color: rgba(255,255,255,.5); text-decoration: none; font-size: .88rem; transition: color .2s; }
+  .footer-col a:hover { color: #fff; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .5rem; font-size: .82rem; }
+  .footer-socials { display: flex; gap: .75rem; }
+  .social-icon { width: 34px; height: 34px; background: rgba(255,255,255,.07); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.5); text-decoration: none; font-size: .9rem; transition: all .2s; }
+  .social-icon:hover { background: var(--accent); color: #fff; }
+
+  /* ANIMATIONS */
+  .fade-up { opacity: 0; transform: translateY(32px); transition: opacity .7s ease, transform .7s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .fade-up.d1{transition-delay:.1s} .fade-up.d2{transition-delay:.2s} .fade-up.d3{transition-delay:.3s} .fade-up.d4{transition-delay:.4s}
+  .fade-left { opacity: 0; transform: translateX(-30px); transition: opacity .7s ease, transform .7s ease; }
+  .fade-left.visible { opacity: 1; transform: translateX(0); }
+  .fade-right { opacity: 0; transform: translateX(30px); transition: opacity .7s ease, transform .7s ease; }
+  .fade-right.visible { opacity: 1; transform: translateX(0); }
+
+  @media (max-width: 900px) {
+    .origin-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .mv-grid { grid-template-columns: 1fr; }
+    .values-grid { grid-template-columns: 1fr 1fr; }
+    .promise-pillars { grid-template-columns: 1fr 1fr; }
+    .team-grid { grid-template-columns: 1fr 1fr; }
+    .services-list { grid-template-columns: 1fr; }
+    .passion-cards { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .stat-row { grid-template-columns: 1fr; }
+    .manifesto-pillars-grid { grid-template-columns: 1fr !important; }
+  }
+  @media (max-width: 640px) {
+    .nav-links, .nav-cta-group { display: none; }
+    .hamburger { display: flex; }
+    .values-grid { grid-template-columns: 1fr; }
+    .promise-pillars { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: 1fr 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-dot"></div>
+    <div><span style="color:var(--accent)">Info</span>Point Group<span class="nav-logo-sub">Software LLP · India</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#ai-product">AI Product</a></li>
+    <li><a href="index.html#features">Features</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="index.html#usecases">Use Cases</a></li>
+    <li><a href="index.html#faqs">FAQs</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+  </ul>
+  <div class="nav-cta-group">
+    <a href="#" class="btn btn-ghost">Log In</a>
+    <a href="pricing.html" class="btn btn-primary">Get Started →</a>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#services" onclick="closeMenu()">Services</a>
+  <a href="index.html#ai-product" onclick="closeMenu()">AI Product</a>
+  <a href="pricing.html" onclick="closeMenu()">Pricing</a>
+  <a href="index.html#faqs" onclick="closeMenu()">FAQs</a>
+  <a href="about.html" onclick="closeMenu()">About Us</a>
+  <a href="#" style="margin-top:.5rem">Log In</a>
+  <a href="pricing.html" class="btn btn-primary" style="justify-content:center" onclick="closeMenu()">Get Started →</a>
+</div>
+
+<!-- HERO -->
+<div class="about-hero">
+  <div class="about-hero-bg"></div>
+  <div class="about-hero-grid"></div>
+  <div class="about-hero-inner">
+    <div class="hero-tag">🇮🇳 &nbsp; InfoPoint Group Software LLP &nbsp; · &nbsp; Registered in India</div>
+    <h1>
+      <span class="line">We are <em>deeply passionate</em></span>
+      <span class="line">about technology that</span>
+      <span class="line">transforms businesses</span>
+    </h1>
+    <p class="hero-intro">
+      InfoPoint Group Software LLP is an India-registered technology company built on one core belief: <strong>every business deserves world-class IT and AI — regardless of size or budget.</strong>
+      We consult, build, support, and innovate across the full technology stack — from enterprise ERP to our flagship AI chatbot product — <strong>with relentless passion and unwavering commitment to your goals.</strong>
+    </p>
+  </div>
+</div>
+
+<!-- MANIFESTO STRIP -->
+<div class="manifesto-strip">
+  <div style="overflow:hidden">
+    <div class="manifesto-ticker">
+      <span class="manifesto-item">Relentlessly passionate</span>
+      <span class="manifesto-item">Built in India</span>
+      <span class="manifesto-item">Trusted globally</span>
+      <span class="manifesto-item">Obsessed with your success</span>
+      <span class="manifesto-item">Full-stack IT consulting</span>
+      <span class="manifesto-item">AI-powered innovation</span>
+      <span class="manifesto-item">Relentlessly passionate</span>
+      <span class="manifesto-item">Built in India</span>
+      <span class="manifesto-item">Trusted globally</span>
+      <span class="manifesto-item">Obsessed with your success</span>
+      <span class="manifesto-item">Full-stack IT consulting</span>
+      <span class="manifesto-item">AI-powered innovation</span>
+    </div>
+  </div>
+</div>
+
+<!-- AI FOR EVERYONE MANIFESTO -->
+<section id="ai-manifesto" style="background:var(--ink);color:#fff;position:relative;overflow:hidden;padding:100px 5vw;">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 55% 70% at 100% 50%,rgba(0,212,168,.12) 0%,transparent 60%),radial-gradient(ellipse 45% 60% at 0% 30%,rgba(91,75,255,.2) 0%,transparent 55%);pointer-events:none;"></div>
+  <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:70px 70px;pointer-events:none;"></div>
+
+  <div style="position:relative;z-index:1;max-width:960px;margin:0 auto;text-align:center;" class="fade-up">
+    <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(0,212,168,.15);color:var(--accent2);border:1px solid rgba(0,212,168,.3);border-radius:100px;padding:.35rem .9rem;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2.5rem;">
+      ✦ &nbsp; Our belief about AI
+    </div>
+
+    <h2 style="font-family:var(--font-head);font-size:clamp(2.2rem,5vw,4rem);font-weight:800;line-height:1.08;letter-spacing:-.03em;color:#fff;margin-bottom:2rem;">
+      Every business deserves AI that works<br>
+      <span style="background:linear-gradient(90deg,var(--accent2),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">as hard as they do</span>
+    </h2>
+
+    <p style="font-size:clamp(1.05rem,2vw,1.3rem);color:rgba(255,255,255,.65);max-width:740px;margin:0 auto 4rem;font-weight:300;line-height:1.8;">
+      We believe AI is not a luxury for the tech elite. It is not something reserved for companies with hundred-million-dollar budgets, armies of data scientists, or Silicon Valley postcodes.
+      <strong style="color:#fff;font-weight:500;"> AI belongs to every business on earth — and we've made it our mission to put it there.</strong>
+    </p>
+
+    <!-- 3 belief pillars -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:4rem;" class="manifesto-pillars-grid">
+      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:2.5rem 2rem;text-align:left;transition:all .25s;" onmouseover="this.style.background='rgba(255,255,255,.08)'" onmouseout="this.style.background='rgba(255,255,255,.04)'">
+        <div style="font-size:2rem;margin-bottom:1.25rem;">🌐</div>
+        <h3 style="font-family:var(--font-head);font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.75rem;">No business left behind</h3>
+        <p style="font-size:.9rem;color:rgba(255,255,255,.55);line-height:1.7;">A small bakery in Pune deserves the same AI-powered customer engagement as a global enterprise. The technology exists. The only thing missing was someone willing to make it truly accessible. That's us.</p>
+      </div>
+      <div style="background:rgba(91,75,255,.08);border:1px solid rgba(91,75,255,.25);border-radius:20px;padding:2.5rem 2rem;text-align:left;transition:all .25s;" onmouseover="this.style.background='rgba(91,75,255,.15)'" onmouseout="this.style.background='rgba(91,75,255,.08)'">
+        <div style="font-size:2rem;margin-bottom:1.25rem;">🔕</div>
+        <h3 style="font-family:var(--font-head);font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.75rem;">No customer lost to silence</h3>
+        <p style="font-size:.9rem;color:rgba(255,255,255,.55);line-height:1.7;">Every unanswered question at 2am is a customer who moved on. Every slow response is a lead that went cold. We built AI that is always present, always knowledgeable, and never makes someone feel ignored.</p>
+      </div>
+      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:2.5rem 2rem;text-align:left;transition:all .25s;" onmouseover="this.style.background='rgba(255,255,255,.08)'" onmouseout="this.style.background='rgba(255,255,255,.04)'">
+        <div style="font-size:2rem;margin-bottom:1.25rem;">🤝</div>
+        <h3 style="font-family:var(--font-head);font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.75rem;">AI as an amplifier, not a replacement</h3>
+        <p style="font-size:.9rem;color:rgba(255,255,255,.55);line-height:1.7;">We don't believe AI replaces human connection — it amplifies it. By handling the repetitive, the routine, and the round-the-clock, AI frees your team to focus on the work that only humans can do.</p>
+      </div>
+    </div>
+
+    <!-- The big quote -->
+    <div style="border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:3rem;background:rgba(255,255,255,.03);position:relative;overflow:hidden;">
+      <div style="position:absolute;top:-1px;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));"></div>
+      <p style="font-family:var(--font-head);font-size:clamp(1.2rem,2.5vw,1.75rem);font-weight:700;color:#fff;line-height:1.45;margin-bottom:1.5rem;">
+        "The question is no longer <em style="color:var(--accent2);font-style:normal;">whether</em> your business should use AI.<br>
+        The question is <em style="color:var(--accent);font-style:normal;">how quickly</em> you can make it work for you —<br>
+        before your competitors do."
+      </p>
+      <div style="display:flex;align-items:center;justify-content:center;gap:1rem;">
+        <div style="width:44px;height:44px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--font-head);font-weight:800;font-size:.9rem;flex-shrink:0;">IG</div>
+        <div style="text-align:left;">
+          <strong style="display:block;font-family:var(--font-head);font-size:.9rem;color:#fff;">InfoPoint Group Founders</strong>
+          <span style="font-size:.8rem;color:rgba(255,255,255,.4);">Written in 2023 — still more true today</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORIGIN STORY -->
+<section id="origin">
+  <div class="origin-grid">
+    <div class="fade-left">
+      <p class="section-label">Our story</p>
+      <h2>From a bold idea<br>to <em>a trusted partner</em></h2>
+      <p>InfoPoint Group Software LLP was founded with a clear-eyed frustration: too many Indian and global businesses were either <strong>over-paying for mediocre IT services</strong> or going without the technology they needed to compete.</p>
+      <p>Our founders — veterans of enterprise IT, cloud architecture, and software engineering — decided to change that. We registered InfoPoint Group under the LLP Act in India and set about building a company that would combine <em>the technical depth of an enterprise firm with the agility, transparency, and genuine care of a startup.</em></p>
+      <p>Over the years, we've delivered ERP implementations, cloud migrations, custom software, and managed IT support to clients across India, the UK, USA, and the Middle East. And in 2023, we launched our most ambitious product yet: <strong>an AI chatbot agent that any business can deploy on their website in minutes</strong> — trained on their own knowledge, working 24/7, capturing leads, and answering queries with remarkable accuracy.</p>
+      <p>Today, InfoPoint Group is two things in one: <em>a trusted IT consulting partner</em> and <em>an AI product company.</em> We're proud of both — and more excited about the future than ever.</p>
+      <div class="stat-row">
+        <div class="stat-box"><strong>10+</strong><span>Years of expertise</span></div>
+        <div class="stat-box"><strong>200+</strong><span>Projects delivered</span></div>
+        <div class="stat-box"><strong>15+</strong><span>Countries served</span></div>
+      </div>
+    </div>
+    <div class="fade-right">
+      <div class="origin-card">
+        <div class="origin-card-accent">Our founding belief</div>
+        <p class="origin-quote">"World-class technology should be accessible to <em>every business</em> — not just the ones with Fortune 500 budgets."</p>
+        <div class="origin-signature">
+          <div class="sig-avatar">IG</div>
+          <div class="sig-info"><strong>The InfoPoint Group Founders</strong><span>Registered in India · Serving Globally</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE DO -->
+<section id="whatwedo">
+  <div class="whatwedo-intro fade-up">
+    <p class="section-label">What we do</p>
+    <h2>A full-spectrum <em>technology partner</em></h2>
+    <p>From strategic IT consulting to hands-on implementation and our own AI product — we cover the entire technology journey of a modern business.</p>
+  </div>
+  <div class="services-list">
+    <div class="svc-item ai-svc fade-up d1">
+      <div class="svc-item-icon">🤖</div>
+      <div><h4>AI Chatbot & Search Agent (Flagship Product)</h4><p>Our NexusAI product embeds an intelligent AI agent on any website in minutes. Train on your knowledge base, capture leads, answer queries 24/7 in 50+ languages. A product born from our consulting work and built for every business.</p></div>
+    </div>
+    <div class="svc-item fade-up d2">
+      <div class="svc-item-icon">☁️</div>
+      <div><h4>Cloud Migration & DevOps</h4><p>Full-cycle migration to AWS, Azure, or GCP — including assessment, architecture, migration execution, and post-migration managed support. We've moved 100+ workloads to the cloud safely and on schedule.</p></div>
+    </div>
+    <div class="svc-item fade-up d1">
+      <div class="svc-item-icon">🏭</div>
+      <div><h4>ERP Implementation & Consulting</h4><p>Deep ERP expertise across SAP, Oracle, Odoo, Zoho, and Microsoft Dynamics. From requirements through go-live and training — we make ERP transformations genuinely successful.</p></div>
+    </div>
+    <div class="svc-item fade-up d2">
+      <div class="svc-item-icon">🛡️</div>
+      <div><h4>Managed IT Support</h4><p>SLA-backed 24/7 monitoring, helpdesk, incident management, and proactive maintenance. Your IT infrastructure runs smoothly so you can focus entirely on your business.</p></div>
+    </div>
+    <div class="svc-item fade-up d1">
+      <div class="svc-item-icon">💻</div>
+      <div><h4>Custom Software Development</h4><p>Bespoke web and mobile applications — from MVPs to enterprise platforms. React, Node.js, Python, mobile — we architect and build software that solves real business problems.</p></div>
+    </div>
+    <div class="svc-item fade-up d2">
+      <div class="svc-item-icon">📊</div>
+      <div><h4>Data Analytics & Business Intelligence</h4><p>Custom dashboards, analytics pipelines, and AI-powered insights using Power BI, Tableau, Looker, and Python. Turn your data into decisions that drive growth.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION + VISION -->
+<section id="mission">
+  <div class="fade-up" style="text-align:center; max-width:600px; margin:0 auto">
+    <p class="section-label">What drives us</p>
+    <h2>Mission & <em>Vision</em></h2>
+    <p style="color:var(--muted); font-size:1.05rem; font-weight:300; margin-top:.75rem">Two sides of the same relentless commitment — to build technology that genuinely serves people and grows businesses.</p>
+  </div>
+  <div class="mv-grid">
+    <div class="mv-card mission fade-up d1">
+      <div class="mv-card-icon">🎯</div>
+      <h3>Our Mission</h3>
+      <p>To be the most trusted and accessible technology partner for businesses of every size — delivering enterprise-grade IT consulting, cloud, ERP, and AI solutions with transparency, passion, and an unwavering focus on measurable outcomes for our clients.</p>
+    </div>
+    <div class="mv-card vision fade-up d2">
+      <div class="mv-card-icon">🔭</div>
+      <h3>Our Vision</h3>
+      <p>A world where every business — from a family-run store in Mumbai to a multinational in London — has access to the technology, AI tools, and expert guidance it needs to compete, grow, and thrive. Built in India. Built for the world.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section id="values">
+  <div class="fade-up">
+    <p class="section-label">Our values</p>
+    <h2>The principles we <em>live by</em></h2>
+  </div>
+  <div class="values-grid">
+    <div class="value-card fade-up d1"><div class="value-number">01</div><div class="value-icon">🔥</div><h3>Burning Passion for Technology</h3><p>We wake up excited about what AI and technology can do for businesses. That energy shows in every project, every product feature, every support call.</p></div>
+    <div class="value-card fade-up d2"><div class="value-number">02</div><div class="value-icon">🤝</div><h3>Your Goals Are Our Goals</h3><p>We don't just deliver projects. We invest in your outcomes. Your growth KPIs become our benchmarks — and we won't rest until we've helped you hit them.</p></div>
+    <div class="value-card fade-up d3"><div class="value-number">03</div><div class="value-icon">🔍</div><h3>Radical Transparency</h3><p>Honest timelines, honest scoping, honest pricing. No surprises, no scope creep without consent. We believe trust is earned through relentless clarity.</p></div>
+    <div class="value-card fade-up d1"><div class="value-number">04</div><div class="value-icon">⚡</div><h3>Bias Toward Action</h3><p>We move fast, ship early, and learn continuously. In both consulting and product work, momentum and iteration beat analysis paralysis every time.</p></div>
+    <div class="value-card fade-up d2"><div class="value-number">05</div><div class="value-icon">🌍</div><h3>India-Built, World-Class</h3><p>We're proud to be registered and built in India — and equally proud to deliver work that stands shoulder to shoulder with the best technology firms anywhere in the world.</p></div>
+    <div class="value-card fade-up d3"><div class="value-number">06</div><div class="value-icon">🛡️</div><h3>Security & Compliance First</h3><p>GDPR, India IT Act, DPDP Act — we take data privacy and compliance seriously. Every system we build or manage is engineered with security as a first-class concern.</p></div>
+  </div>
+</section>
+
+<!-- PROMISE -->
+<section id="promise">
+  <div class="promise-inner">
+    <p class="section-label">Our commitment to you</p>
+    <h2 style="color:#fff">The InfoPoint <em style="color:var(--accent2)">Promise</em></h2>
+    <p class="promise-lead">Whether you're a startup choosing your first cloud provider or an enterprise deploying an AI chatbot — here's what you can always expect from us.</p>
+    <div class="promise-pillars">
+      <div class="pillar fade-up d1"><div class="pillar-icon">🚀</div><h4>Onboarding That Actually Works</h4><p>We hold your hand through every stage. You'll never feel like you bought a product or engagement and were left alone with it.</p></div>
+      <div class="pillar fade-up d2"><div class="pillar-icon">📈</div><h4>Outcomes, Not Just Outputs</h4><p>We define success in your terms — leads captured, queries resolved, systems live, uptime maintained. Deliverables are the minimum; results are the goal.</p></div>
+      <div class="pillar fade-up d3"><div class="pillar-icon">💬</div><h4>Real Humans, Real Accountability</h4><p>When you call, a person answers. When something goes wrong, we fix it before you have to escalate. Accountability is non-negotiable here.</p></div>
+      <div class="pillar fade-up d4"><div class="pillar-icon">🎓</div><h4>Knowledge Transferred Freely</h4><p>We train your team, share our thinking, and document everything. Because an empowered client is a successful client — and that's how long-term partnerships are built.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="fade-up">
+    <p class="section-label">The people behind it all</p>
+    <h2>Built by people who <em>care deeply</em></h2>
+    <p style="color:var(--muted);font-size:1.05rem;font-weight:300;max-width:580px;margin-top:.75rem">A team of IT consultants, AI engineers, product designers, and customer success obsessives — united by a genuine love for technology and an even greater love for seeing our clients succeed.</p>
+  </div>
+  <div class="team-grid">
+    <div class="team-card fade-up d1"><div class="team-avatar-wrap"><div class="team-avatar-ring">👨‍💼</div></div><div class="team-info"><h4>Founder & MD</h4><div class="role">Strategy & Client Success</div><p>20+ years in enterprise IT. Built the vision for InfoPoint Group from a single belief: technology should be accessible to every business.</p></div></div>
+    <div class="team-card fade-up d2"><div class="team-avatar-wrap"><div class="team-avatar-ring">👩‍💻</div></div><div class="team-info"><h4>Head of Engineering</h4><div class="role" style="color:var(--accent2)">AI & Cloud Architecture</div><p>Leads our AI product and cloud teams. Specialist in LLMs, distributed systems, and making complex technology feel simple.</p></div></div>
+    <div class="team-card fade-up d3"><div class="team-avatar-wrap"><div class="team-avatar-ring">👨‍🔧</div></div><div class="team-info"><h4>Head of Consulting</h4><div class="role" style="color:var(--accent3)">ERP & Digital Transformation</div><p>Delivered 80+ ERP and cloud transformation projects. Believes every implementation is unique and deserves a bespoke approach.</p></div></div>
+    <div class="team-card fade-up d4"><div class="team-avatar-wrap"><div class="team-avatar-ring">👩‍🎯</div></div><div class="team-info"><h4>Head of Customer Success</h4><div class="role" style="color:#f59e0b">Growth & Support</div><p>Your outcomes are her KPI. Ensures every InfoPoint client — consulting or product — gets more than they expected from day one.</p></div></div>
+  </div>
+</section>
+
+<!-- PASSION STATEMENT -->
+<section id="passion">
+  <div class="passion-inner">
+    <p class="section-label" style="text-align:center">Why we do what we do</p>
+    <h2 class="passion-statement fade-up">We are <em>unreasonably passionate</em> about helping your business reach its goals</h2>
+    <p class="passion-body fade-up d1">
+      This isn't a job for us. It's a calling. <strong>Every morning, our team wakes up thinking about one thing: how can we help your business do more today than it did yesterday?</strong> Whether that's closing a critical bug in your ERP at midnight, fine-tuning your AI chatbot's knowledge base for the tenth time, or jumping on a call to explain a cloud architecture decision — we lean in, every single time. When you win, we feel it. When you struggle, we care. <strong>That's not a value statement — it's just who we are.</strong>
+    </p>
+    <div class="passion-cards">
+      <div class="passion-card fade-up d1"><div class="passion-card-num">∞</div><h4>Unlimited commitment</h4><p>We have no off switch when it comes to your success. Our team is available, engaged, and genuinely invested in your outcomes — not just your contract value.</p></div>
+      <div class="passion-card fade-up d2"><div class="passion-card-num">01</div><h4>Your goals, always first</h4><p>Every product decision, every project scope, every resource we assign — it starts by asking: does this help our client grow faster, smarter, and more sustainably?</p></div>
+      <div class="passion-card fade-up d3"><div class="passion-card-num">↑</div><h4>Always improving</h4><p>Technology never stands still. Neither do we. We invest constantly in staying at the frontier — AI, cloud, security — so you always benefit from the best available solutions.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="about-cta">
+  <h2>Let's build something<br>great together</h2>
+  <p>Whether you need IT consulting, a cloud migration, or an AI agent for your website — InfoPoint Group is ready to help. Let's start with a conversation.</p>
+  <div class="cta-btns">
+    <a href="pricing.html" class="btn-cta-white">View Pricing & Plans</a>
+    <a href="index.html" class="btn-outline-white">Explore Our Services</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <a href="index.html" class="nav-logo" style="color:#fff"><div class="nav-logo-dot"></div><div>Info<span style="color:var(--accent)">Point</span> Group<span class="nav-logo-sub" style="color:rgba(255,255,255,.35);font-family:var(--font-body);font-size:.68rem;font-weight:500;display:block">Software LLP</span></div></a>
+      <p style="font-size:.88rem;line-height:1.65;margin-top:.75rem;max-width:260px">IT consulting, AI chatbots, ERP, cloud migration & managed support — registered in India, trusted globally.</p>
+      <div style="font-size:.8rem;color:rgba(255,255,255,.35);margin-top:.5rem">🇮🇳 Registered under LLP Act, India</div>
+      <div class="footer-socials" style="margin-top:1rem">
+        <a href="#" class="social-icon">in</a><a href="#" class="social-icon">𝕏</a><a href="#" class="social-icon">▶</a>
+      </div>
+    </div>
+    <div class="footer-col"><h5>Services</h5><ul><li><a href="index.html#services">IT Consulting</a></li><li><a href="index.html#services">Cloud Migration</a></li><li><a href="index.html#services">ERP Implementation</a></li><li><a href="index.html#services">Managed Support</a></li></ul></div>
+    <div class="footer-col"><h5>AI Product</h5><ul><li><a href="index.html#ai-product">NexusAI Chatbot</a></li><li><a href="index.html#features">Features</a></li><li><a href="pricing.html">Pricing (INR/USD)</a></li><li><a href="index.html#usecases">Use Cases</a></li></ul></div>
+    <div class="footer-col"><h5>Company</h5><ul><li><a href="about.html">About Us</a></li><li><a href="#">Blog</a></li><li><a href="#">Careers</a></li><li><a href="#">Contact</a></li><li><a href="#">Privacy Policy</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 InfoPoint Group Software LLP · All rights reserved</span>
+    <span>Made with ❤️ in India 🇮🇳</span>
+  </div>
+</footer>
+
+<script>
+function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.fade-up, .fade-left, .fade-right').forEach(el => observer.observe(el));
+
+// Hero text stagger on load
+window.addEventListener('load', () => {
+  const lines = document.querySelectorAll('.about-hero h1 .line');
+  lines.forEach((l, i) => {
+    l.style.opacity = '0'; l.style.transform = 'translateY(40px)';
+    l.style.transition = `opacity .8s ease ${i*.15}s, transform .8s ease ${i*.15}s`;
+    setTimeout(() => { l.style.opacity='1'; l.style.transform='translateY(0)'; }, 100);
+  });
+});
+</script>
+</body>
+</html>
